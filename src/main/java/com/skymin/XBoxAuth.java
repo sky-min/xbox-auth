@@ -17,9 +17,9 @@ public class XBoxAuth extends Plugin{
 		this.getProxy().getEventManager().subscribe(PlayerLoginEvent.class, this::onLogin);
 	}
 	
-	public void onLogin(PlayerLoginEvent ev){
-		if(!ev.getPlayer().getLoginData().isXboxAuthed()){
-			ev.setCancelReason(kickmsg);
+	public void onLogin(PlayerLoginEvent event){
+		if(!event.getPlayer().getLoginData().isXboxAuthed()){
+			event.setCancelReason(kickmsg);
 		}
 	}
 	
