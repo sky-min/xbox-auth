@@ -1,13 +1,13 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
 name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -21,7 +21,6 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-        cache: maven
     - name: Build with Maven
       run: mvn -B package -Djar.finalName=XBoxAuth --file pom.xml
     - name: "Build & test"
@@ -45,6 +44,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./target/XboxAuth.jar
+        asset_path: ./target/XBoxAuth.jar
         asset_name: XBoxAuth.jar
         asset_content_type: application/zip
