@@ -1,2 +1,0 @@
-# xbox-auth
-Waterdog Plugin
