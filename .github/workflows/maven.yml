@@ -23,7 +23,7 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package -Djar.finalName=XBoxAuth --file pom.xml
-    - name: "Build & test"
+    - name: "test"
       run: |
         echo "done!"
     - name: Create Release
