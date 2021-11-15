@@ -14,7 +14,7 @@ public class XBoxAuth extends Plugin{
 		loadConfig();
 		kickmsg = getConfig().getString("kick-massage");
 		
-		proxy.getEventManager().subscribe(PlayerLoginEvent.class, this::onLogin);
+		this.getProxy().getEventManager().subscribe(PlayerLoginEvent.class, this::onLogin);
 	}
 	
 	public void onLogin(PlayerLoginEvent ev){
