@@ -1,0 +1,4 @@
+name: xbox-auth
+author: skymin
+version: 1.0.0
+main: com.skymin.XBoxAuth
