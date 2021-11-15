@@ -23,7 +23,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package -Djar.finalName=XBoxAuth --file pom.xml
     - name: "Build & test"
       run: |
         echo "done!"
@@ -34,7 +34,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.run_id }}
-        release_name: WDStaffChat [Auto] ${{ github.run_id }}
+        release_name: XBoxAuth [Auto] ${{ github.run_id }}
         body: |
           Automatic release
         draft: false
@@ -45,6 +45,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./target/WDStaffChat.jar
-        asset_name: WDStaffChat.jar
+        asset_path: ./target/XboxAuth.jar
+        asset_name: XBoxAuth.jar
         asset_content_type: application/zip
