@@ -24,3 +24,27 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: "Build & test"
+      run: |
+        echo "done!"
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.run_id }}
+        release_name: WDStaffChat [Auto] ${{ github.run_id }}
+        body: |
+          Automatic release
+        draft: false
+        prerelease: false
+    - name: Add release files
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/WDStaffChat.jar
+        asset_name: WDStaffChat.jar
+        asset_content_type: application/zip
