@@ -19,7 +19,8 @@ public class XBoxAuth extends Plugin{
 	
 	public void onLogin(PlayerLoginEvent event){
 		if(!event.getPlayer().getLoginData().isXboxAuthed()){
-			event.setCancelReason(kickmsg);
+			event.cancelReason = kickmsg;
+			event.setCancelled();
 		}
 	}
 	
